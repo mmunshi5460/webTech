@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MMClubs.Models.GroupMember>
+@{
+    ViewData["Title"] = @ViewBag.Header;
+}
+
+<h1>@ViewData["Title"]</h1>
+@*<p>@TempData["Message"]</p>*@
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistIdGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateJoined)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateLeft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistIdGroupNavigation.NameAddress.FirstName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <a asp-controller="MMGroupMembers" asp-action="Index" asp-route-artistId=@item.ArtistIdGroupNavigation.ArtistId>@item.ArtistIdGroupNavigation.ArtistId</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateJoined)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateLeft)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.ArtistIdGroupNavigation.NameAddress.FirstName)
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="MMArtists" asp-action="Index">Back to List</a>
+</div>

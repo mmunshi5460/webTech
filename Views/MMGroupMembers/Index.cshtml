@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MMClubs.Models.GroupMember>
+
+@{
+    ViewData["Title"] = @ViewBag.Header;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" asp-route-artistId="@TempData["artistId"]">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateJoined)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateLeft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistIdGroupNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistIdMemberNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateJoined)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateLeft)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtistIdGroupNavigation.ArtistId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtistIdMemberNavigation.ArtistId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ArtistIdGroup">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ArtistIdGroup">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ArtistIdGroup">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

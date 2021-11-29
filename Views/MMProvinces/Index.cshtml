@@ -1,0 +1,10 @@
+﻿@model IEnumerable<MMClubs.Models.Province>
+
+@{
+    ViewData["Title"] = "Provinces of " + ViewData["CountryName"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<partial name="~/Views/Shared/_ProvincesPartial.cshtml" model="Model">
